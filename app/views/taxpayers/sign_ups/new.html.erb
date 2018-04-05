@@ -1,0 +1,6 @@
+<%= simple_form_for @sign_up, url: :sign_ups do |f| %>
+  <%= f.input :first_name, label: "First Name" %>
+  <%= f.input :middle_name, label: "Middle Name" %>
+  <%= f.input :last_name, label: "Last Name" %>
+  <%= f.submit "Sign Up" %>
+<% end %>

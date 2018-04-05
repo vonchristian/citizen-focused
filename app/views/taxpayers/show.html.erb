@@ -1,0 +1,5 @@
+<%= link_to 'New Business', new_taxpayer_business_registration_path(@taxpayer) %>
+
+<% @taxpayer.businesses.each do |business| %>
+  <%= link_to business.name, business %>
+<% end %>
