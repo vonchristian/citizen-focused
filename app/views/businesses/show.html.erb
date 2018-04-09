@@ -1,1 +1,10 @@
-<%= link_to(image_tag("paymaya.png", height: 50, width: 90), new_business_pay_by_pay_maya_path(@business)) %>
+<%= render @business_charges %>
+<p>SubTotal: <%= number_to_currency @business.business_charges.total %></p>
+<p>Mode of Payment: <%= @business.mode_of_payment_name %></p>
+<p> Payment for this Quarter: <%= number_to_currency @business.business_charges.can_be_deferred.total / 4 %> </p>
+<%= link_to(image_tag("paymaya.png", height: 50, width: 90), checkout_business_pay_by_pay_maya_path(@business), method: :post) %>
+
+
+<%= link_to 'New Gross Sale', new_business_gross_sale_path(@business) %>
+<%= link_to 'New Activity', new_business_business_activity_path(@business) %>
+<%= link_to "Submit Application", new_business_permit_application_path(@business) %>

@@ -1,0 +1,9 @@
+<% @business.business_charges.each do |charge| %>
+  <%= charge.name %>
+  <%= number_to_currency charge.amount %>
+  <% if charge.can_be_deferred? %>
+    <%= charge.payable_amount %>
+    <%= charge.deferred_amount %>
+  <% end %>
+<% end %>
+<hr>

@@ -30,3 +30,29 @@ pay by over the counter
   generate qr code
   present to treasury with total amount
   pay
+
+  ef07c802-c983-4eb8-b632-3cd9c567f96a
+
+  Cash in Bank Paymaya
+
+
+
+  business tax
+  10_000
+  quarterly?
+  2500 first_quarter
+  2500 second_quarter
+  2500 third quarter
+  2500 fourth quarter
+
+  50_000 Gross Sale
+
+compute charge
+gross_sale_charge
+charge:belongs_to Business Tax
+gross_sale:belongs_to
+amount:decimal
+
+quarterly payment schedule
+semi annuall payment schedule
+

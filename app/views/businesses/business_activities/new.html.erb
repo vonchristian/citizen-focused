@@ -1,0 +1,8 @@
+<% Activity.all.each do |activity| %>
+  <%= simple_form_for [@business, @business_activity], url: :business_business_activities do |f| %>
+    <%= f.input :quantity %>
+    <%= f.input :activity_id, input_html: { value: activity.id } %>
+    <%= f.input :business_id, input_html: { value: @business.id } %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

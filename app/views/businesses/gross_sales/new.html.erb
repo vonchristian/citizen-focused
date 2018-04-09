@@ -1,0 +1,9 @@
+<%= simple_form_for [@business, @gross_sale], url: :business_gross_sales do |f| %>
+  <%= f.input :gross_sale %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :date_entered %>
+  <%= f.input :business_id, input_html: { value: @business.id } %>
+  <%= f.submit %>
+<% end %>
+
