@@ -1,3 +1,6 @@
+after submitting application
+  notify each office
+
 metrics
 no of approved business permits
 no of businesses invited
