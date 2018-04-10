@@ -12,7 +12,6 @@ class Business < ApplicationRecord
   has_many :gross_sales,         class_name: "Businesses::GrossSale"
   has_many :business_activities, class_name: "Businesses::BusinessActivity"
 
-  delegate :name, to: :mode_of_payment, prefix: true
+  delegate :name, to: :mode_of_payment, prefix: true, allow_nil: true
   delegate :no_of_payments_per_year, to: :mode_of_payment
-
 end

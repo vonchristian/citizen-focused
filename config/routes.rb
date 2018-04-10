@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: 'citizen_focused#index'
+  namespace :citizen_focused do
+    resources :subscriptions, only: [:new, :create]
+    resources :for_governments, only: [:index]
+  end
   resources :citizen_focused, only: [:index]
   resources :sign_ups, only: [:new, :create], module: :taxpayers
   resources :taxpayers, only: [:show] do

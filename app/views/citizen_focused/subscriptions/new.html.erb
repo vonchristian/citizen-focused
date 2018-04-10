@@ -1,0 +1,8 @@
+<% Plan.all.each do |plan| %>
+  <%= simple_form_for @subscription, url: :citizen_focused_subscriptions do |f| %>
+    <%= f.input :email %>
+    <%= f.input :name %>
+    <%= f.input :plan_id, input_html: { value: plan.id } %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
