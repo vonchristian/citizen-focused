@@ -1,5 +1,7 @@
 <%= simple_form_for [@taxpayer, @business_registration], url: :taxpayer_business_registrations do |f| %>
   <%= f.input :name %>
   <%= f.input :taxpayer_id, input_html: { value: @taxpayer.id } %>
+  <%= f.input :mode_of_payment_id, input_html: { value: Configs::ModeOfPayment.first.id } %>
+
   <%= f.submit "Save" %>
 <% end %>

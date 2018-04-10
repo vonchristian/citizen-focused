@@ -9,7 +9,7 @@ module Taxpayers
       @business_registration = Taxpayers::BusinessRegistration.new(business_params)
       if @business_registration.valid?
         @business_registration.register!
-        redirect_to taxpayer_url(@taxpayer), notice: "Business registration saved successfully."
+        redirect_to new_business_business_activity_url(@business_registration.find_business), notice: "Business registration saved successfully."
       else
         render :new
       end
@@ -18,7 +18,7 @@ module Taxpayers
     private
     def business_params
       params.require(:taxpayers_business_registration).
-      permit(:name, :taxpayer_id)
+      permit(:name, :taxpayer_id, :mode_of_payment_id)
     end
   end
 end

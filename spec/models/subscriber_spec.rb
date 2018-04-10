@@ -3,6 +3,8 @@ require 'rails_helper'
 describe Subscriber do
   describe 'associations' do
     it { is_expected.to have_many :businesses }
+    it { is_expected.to have_many :subscriptions }
+    it { is_expected.to have_many :subscribed_plans }
   end
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
