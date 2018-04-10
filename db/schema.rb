@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_05_134834) do
+ActiveRecord::Schema.define(version: 2018_04_10_095325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,7 +96,9 @@ ActiveRecord::Schema.define(version: 2018_04_05_134834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "mode_of_payment_id"
+    t.bigint "supporter_id"
     t.index ["mode_of_payment_id"], name: "index_businesses_on_mode_of_payment_id"
+    t.index ["supporter_id"], name: "index_businesses_on_supporter_id"
   end
 
   create_table "chargeables", force: :cascade do |t|
@@ -190,6 +192,12 @@ ActiveRecord::Schema.define(version: 2018_04_05_134834) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "promotions", force: :cascade do |t|
     t.integer "promo_type"
     t.datetime "start_date"
@@ -209,6 +217,21 @@ ActiveRecord::Schema.define(version: 2018_04_05_134834) do
     t.datetime "updated_at", null: false
     t.index ["promotion_id"], name: "index_redeemed_promotions_on_promotion_id"
     t.index ["redeemer_type", "redeemer_id"], name: "index_redeemed_promotions_on_redeemer_type_and_redeemer_id"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "subscriber_id"
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
+    t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
   end
 
   create_table "taxes", force: :cascade do |t|
@@ -234,6 +257,7 @@ ActiveRecord::Schema.define(version: 2018_04_05_134834) do
   add_foreign_key "business_activities", "businesses"
   add_foreign_key "business_owners", "businesses"
   add_foreign_key "businesses", "mode_of_payments"
+  add_foreign_key "businesses", "subscribers", column: "supporter_id"
   add_foreign_key "chargeables", "charges"
   add_foreign_key "charges", "accounting_accounts", column: "accounts_receivable_account_id"
   add_foreign_key "charges", "accounting_accounts", column: "deferred_income_account_id"
@@ -247,4 +271,6 @@ ActiveRecord::Schema.define(version: 2018_04_05_134834) do
   add_foreign_key "gross_sales", "businesses"
   add_foreign_key "mode_of_payment_schedules", "mode_of_payments"
   add_foreign_key "redeemed_promotions", "promotions"
+  add_foreign_key "subscriptions", "plans"
+  add_foreign_key "subscriptions", "subscribers"
 end
