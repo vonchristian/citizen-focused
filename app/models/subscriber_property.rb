@@ -1,0 +1,2 @@
+class SubscriberProperty < ApplicationRecord
+end

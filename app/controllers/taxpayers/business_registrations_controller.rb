@@ -18,7 +18,8 @@ module Taxpayers
     private
     def business_params
       params.require(:taxpayers_business_registration).
-      permit(:name, :taxpayer_id, :mode_of_payment_id)
+      permit(:name, :taxpayer_id, :mode_of_payment_id,
+        :building_number, :street, :barangay, :city_or_municipality, :province)
     end
   end
 end

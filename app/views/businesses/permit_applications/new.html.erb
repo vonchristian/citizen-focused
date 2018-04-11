@@ -1,9 +1,19 @@
-<% @business.business_charges.each do |charge| %>
+<% @business.charges.each do |charge| %>
   <%= charge.name %>
   <%= number_to_currency charge.amount %>
-  <% if charge.can_be_deferred? %>
-    <%= charge.payable_amount %>
-    <%= charge.deferred_amount %>
-  <% end %>
+
 <% end %>
 <hr>
+<% @business.business_requirements.each do |requirement| %>
+  <%= requirement.name %>
+  <%= requirement.application_status %>
+  <%= requirement.approval_status %>
+
+<% end %>
+<hr>
+<%= simple_form_for [@business, @permit_application], url: :business_permit_applications do |f| %>
+<%= f.input :application_date, input_html: { value: Time.zone.now } %>
+<%= f.input :business_id, input_html: { value: @business.id } %>
+
+<%= f.submit "Submit Application" %>
+<% end %>

@@ -1,0 +1,10 @@
+<% Charge.all.each do |charge| %>
+  <%= charge.name %>
+  <%= simple_form_for [@business, @charge], url: :business_additional_charges do |f| %>
+    <%= f.input :charge_id, input_html: { value: charge.id } %>
+    <% unless @business.charges.include?(charge) %>
+      <%= f.submit "Add" %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= link_to "Back to Assessment", new_business_assessment_path(@business) %>

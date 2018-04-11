@@ -1,0 +1,8 @@
+<%= link_to "Credit Card", checkout_business_pay_by_pay_maya_path(@business), method: :post %>
+
+<%= @assessment.date %>
+<% @assessment.debit_amounts.each do |amount| %>
+  <%= amount.account_name %>
+  <%= amount.amount %>
+<% end %>
+<%= link_to 'Over the Counter', new_business_over_the_counter_payment_path(@business, entry_id: @assessment.id) %>

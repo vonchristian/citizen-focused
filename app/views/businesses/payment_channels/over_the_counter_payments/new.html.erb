@@ -1,0 +1,8 @@
+<% @assessment.debit_amounts.each do |amount| %>
+  <%= amount.account_name %>
+  <%= number_to_currency amount.amount %>
+<% end %>
+<%= simple_form_for [@business, @payment], url: :business_over_the_counter_payments do |f| %>
+  <%= f.input :date, as: :string, input_html: { value: Time.zone.now } %>
+  <%= f.submit "Accept Payment" %>
+<% end %>

@@ -2,6 +2,12 @@
   <%= f.input :name %>
   <%= f.input :taxpayer_id, input_html: { value: @taxpayer.id } %>
   <%= f.input :mode_of_payment_id, input_html: { value: Configs::ModeOfPayment.first.id } %>
+  <p>Address</p>
+ <%= f.input :building_number %>
+  <%= f.input :street %>
+  <%= f.input :barangay %>
+  <%= f.input :city_or_municipality %>
+  <%= f.input :province %>
 
   <%= f.submit "Save" %>
 <% end %>

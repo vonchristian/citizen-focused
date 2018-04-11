@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe Business do
   describe 'associations' do
-    it { is_expected.to belong_to :supporter }
+    it { is_expected.to belong_to :city_or_municipality }
+    it { is_expected.to belong_to :barangay }
     it { is_expected.to belong_to :mode_of_payment }
     it { is_expected.to have_many :business_owners }
     it { is_expected.to have_many :taxpayer_owners }
